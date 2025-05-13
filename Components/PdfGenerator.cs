@@ -19,7 +19,9 @@ namespace Proj.Utils
         private const double CharWidthCm = 0.23;
         private const double MinColWidthCm = 2.0;
         private const double MaxColWidthCm = 10.0;
-        private const double DefaultPageWidthCm = 21.0; // Default width, but no longer a constraint
+        private const int WordSpace = 2;
+        private const double MaxPageWidthCm = 70.0;
+        private const double DefaultPageWidthCm = 21.0;
         private const double PageHeightCm = 34.0;
         private const double TableTopMarginCm = 2.0;
         private const double TableBottomMarginCm = 2.5;
@@ -35,8 +37,7 @@ namespace Proj.Utils
         private const string DataSpaceAfter = "0.15cm";
         private const double CellBorderWidth = 0.5;
         private const int SoftBreakInterval = 20;
-        private const int LetterMargin = 2;
-        
+
         // Main method to generate PDF
         public static byte[] Generate(Stream imageStream, List<List<string>> tableData, PdfHeaderModel headerModel, PdfFooterModel footerModel)
         {
@@ -80,12 +81,13 @@ namespace Proj.Utils
                 columnWidths[i] = CalculateColumnWidth(headerRow, dataRows, i, CharWidthCm, MinColWidthCm, MaxColWidthCm);
 
             double tableWidth = columnWidths.Sum(); // Total table width
-            double pageWidthTable = tableWidth + TablePaddingCm; // No page width limit
+            double pageWidthTable = Math.Max(Math.Min(tableWidth + TablePaddingCm, MaxPageWidthCm), DefaultPageWidthCm);
+            double margin = (pageWidthTable - tableWidth) / 2;
 
             // Setup page size and margins
             tableSection.PageSetup.PageWidth = Unit.FromCentimeter(pageWidthTable);
-            tableSection.PageSetup.LeftMargin = Unit.FromCentimeter(MarginCm);
-            tableSection.PageSetup.RightMargin = Unit.FromCentimeter(MarginCm);
+            tableSection.PageSetup.LeftMargin = Unit.FromCentimeter(margin);
+            tableSection.PageSetup.RightMargin = Unit.FromCentimeter(margin);
             tableSection.PageSetup.PageHeight = Unit.FromCentimeter(PageHeightCm);
             tableSection.PageSetup.TopMargin = Unit.FromCentimeter(TableTopMarginCm);
             tableSection.PageSetup.BottomMargin = Unit.FromCentimeter(TableBottomMarginCm);
@@ -192,6 +194,7 @@ namespace Proj.Utils
         {
             var header = headerRow[columnIndex] ?? "";
             int maxWordLen = header.Split(' ', StringSplitOptions.RemoveEmptyEntries).DefaultIfEmpty("").Max(w => w.Length);
+            maxWordLen = maxWordLen + WordSpace;
             var lengths = new List<int> { header.Length };
 
             foreach (var row in dataRows)
@@ -199,7 +202,7 @@ namespace Proj.Utils
                 if (columnIndex < row.Count && row[columnIndex] != null)
                     lengths.Add(row[columnIndex].Length);
             }
-            maxWordLen= maxWordLen+ LetterMargin;
+
             int maxLen = lengths.Max();
             int referenceLen = 10; // Minimum width fallback
             int maxValue = Math.Max(maxWordLen, Math.Max(maxLen, referenceLen));
