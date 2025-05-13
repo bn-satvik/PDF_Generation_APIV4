@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "qM/KXOOkuac=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sapatil\\OneDrive - Barracuda Networks, Inc\\Desktop\\Fs\\t1\\PDF_Generation_API-main\\PDF_Generation_API-main\\Prj2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sapatil\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\pdfsharp\\6.1.1\\pdfsharp.6.1.1.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\pdfsharp-migradoc\\6.1.1\\pdfsharp-migradoc.6.1.1.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\sixlabors.imagesharp\\3.1.8\\sixlabors.imagesharp.3.1.8.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\sapatil\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
