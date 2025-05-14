@@ -18,7 +18,7 @@ namespace Proj.Utils
         private const double MinImagePageHeightCm = 16.0;
         private const double CharWidthCm = 0.23;
         private const double MinColWidthCm = 2.0;
-        private const double MaxColWidthCm = 10.0;
+        private const double MaxColWidthCm = 9.0;
         private const int WordSpace = 2;
         private const double MaxPageWidthCm = 70.0;
         private const double DefaultPageWidthCm = 21.0;
