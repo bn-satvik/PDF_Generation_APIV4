@@ -18,14 +18,12 @@ namespace Proj.Utils
         private const double MinImagePageHeightCm = 16.0;
         private const double CharWidthCm = 0.23;
         private const double MinColWidthCm = 2.0;
-        private const double MaxColWidthCm = 9.0;
         private const int WordSpace = 2;
-        private const double MaxPageWidthCm = 70.0;
+        private const double MaxPageWidthCm = 75.0;
         private const double DefaultPageWidthCm = 21.0;
         private const double PageHeightCm = 34.0;
         private const double TableTopMarginCm = 2.0;
         private const double TableBottomMarginCm = 2.5;
-
         private const double HeaderFooterPaddingCm = 6.0;
         private const double TablePaddingCm = 3.0;
         private const int DefaultFontSize = 10;
@@ -75,7 +73,7 @@ namespace Proj.Utils
             var tableSection = document.AddSection(); // New section for table
             int columnCount = headerRow.Count;
             var columnWidths = new double[columnCount];
-
+            double MaxColWidthCm = GetDynamicMaxColWidthCm(headerRow.Count);
             // Calculate dynamic width for each column based on content
             for (int i = 0; i < columnCount; i++)
                 columnWidths[i] = CalculateColumnWidth(headerRow, dataRows, i, CharWidthCm, MinColWidthCm, MaxColWidthCm);
@@ -149,6 +147,29 @@ namespace Proj.Utils
             double pageHeight = Math.Max(MinImagePageHeightCm, newHeightCm + 2 * MarginCm + HeaderFooterPaddingCm);
 
             return (pageWidth, pageHeight);
+        }
+
+        private static double GetDynamicMaxColWidthCm(int columnCount)
+        {
+            switch (columnCount)
+            {
+                case int n when (n >= 1 && n <= 3):
+                    return 11;
+                case int n when (n >= 4 && n <= 6):
+                    return 10;
+                case int n when (n >= 7 && n <= 8):
+                    return 9;
+                case 9:
+                    return 8;
+                case 10:
+                    return 7;
+                case int n when (n >= 11 && n <= 12):
+                    return 6;
+                case int n when (n >= 13 && n <= 15):
+                    return 5;
+                default:
+                    return 4; // More than 16 columns
+            }
         }
 
         // Builds the table header row
