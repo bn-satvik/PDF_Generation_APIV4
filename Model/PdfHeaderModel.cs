@@ -2,22 +2,30 @@ namespace Proj.Utils
 {
     public class PdfHeaderModel
     {
-        // Path to the logo image file (e.g., "Utils/Logo.png")
-        public string LogoPath { get; set; } = "Utils\\barracuda_logo.png";
+        // Path to the logo image file
+        public string LogoPath { get; set; }
 
-        // Title for the report (e.g., "Top Attacked Users")
+        // Title of the PDF report (e.g., "Top Attacked Users")
         public string Title { get; set; } = string.Empty;
 
-        // Date when the report is generated
-        public string GeneratedDate { get; set; } = DateTime.Now.ToString("MMM dd, yyyy");
+        // Date when the report was generated (formatted)
+        public string GeneratedDate { get; set; }
 
-        // Company name (e.g., "Barracuda Networks")
-        public string CompanyName { get; set; } = string.Empty;
+        // Company name to display on the header
+        public string CompanyName { get; set; }
 
-        // Name of the data inspector (e.g., "Data Inspector")
-        public string ProuductName { get; set; } = string.Empty;
+        // Name of the product 
+        public string ProductName { get; set; } = string.Empty;
 
-        // The date range for the report (e.g., "Data from Apr 26 - Oct 23, 2024")
+        // Date range covered by the report
         public string DateRange { get; set; } = string.Empty;
+
+        // Constructor uses input values for logo path and company name
+        public PdfHeaderModel(string logoPath, string companyName)
+        {
+            LogoPath = logoPath;
+            CompanyName = companyName;
+            GeneratedDate = DateTime.Now.ToString("MMM dd, yyyy");
+        }
     }
 }
